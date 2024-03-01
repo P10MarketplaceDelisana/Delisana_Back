@@ -17,7 +17,7 @@ class IntoleranceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'intolerance_id'=> \App\Models\Intolerance::pluck('id')->random(),
         ];
     }
 }
