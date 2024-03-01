@@ -22,10 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::controller(CategoryController::class)->group(function() {
-    Route::get('/categories',  'index' );
+   Route::get('/categories',  'index' );
+   Route::get('/categories/{id}',  'show' );
      
 });
 
 Route::controller(IntoleranceController::class)->group(function() {
     Route::get('/intolerances',  'index' );
+    Route::get('/intolerances/{id}',  'show' );
 });  

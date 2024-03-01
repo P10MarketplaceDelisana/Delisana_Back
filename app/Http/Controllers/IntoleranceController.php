@@ -13,4 +13,9 @@ class IntoleranceController extends Controller
         return $intolerances;
     }
 
+    public function show($id){
+        $intolerances= Intolerance::find($id);
+        return $intolerances;
+    }
+
 }

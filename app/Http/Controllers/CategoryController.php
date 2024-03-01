@@ -13,4 +13,9 @@ class CategoryController extends Controller
         return $categories;
     }
     
+    public function show($id){
+        $categories= Category::find($id);
+        return $categories;
+    }
+
 }
