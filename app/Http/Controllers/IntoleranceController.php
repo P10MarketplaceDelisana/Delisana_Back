@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Intolerance;
 
 class IntoleranceController extends Controller
 {
@@ -11,9 +12,5 @@ class IntoleranceController extends Controller
         $intolerances= Intolerance::all();
         return $intolerances;
     }
-    
-
-
-
 
 }
