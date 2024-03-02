@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             IntoleranceSeeder::class,
             CategorySeeder::class]);
+            UserSeeder::class;
 
 //         User::factory(10)->create();
 //         Product::factory(10)->create();
