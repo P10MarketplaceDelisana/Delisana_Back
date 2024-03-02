@@ -22,12 +22,14 @@ class ProductsController extends Controller
     public function show($id)
     {
        
-            $product = Product::find($id);
-            if(!$product){
-            return response()->json(['error' => 'Product not found'], 404);
+            $product = Product::with('intolerances')->find($id);
+            if($product){
+                $intolerancesIds = $product->intolerances->pluck('id')->toArray();
+                return response()->json(['intolerances'=>$intolerancesIds], 200);
+            }else{
+            return response()->json(['error'=>'producto no encontrado'], 404);
             }
-        
-            return response()->json($product, 200);
+          
         
     }
 }

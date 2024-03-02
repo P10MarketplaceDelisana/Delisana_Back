@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             IntoleranceSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
+            IntoleranceProductSeeder::class,
            ]);
 //         User::factory(10)->create();   
 //         Order::factory(20)->create();    

@@ -15,10 +15,20 @@ class Product extends Model
         'image',
         'description',
         'category_id',
+        'intolerance_id',
         'price', 
+        
     ];
 
     public function category():BelongsTo{
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function intolerances(){
+        return $this->belongsToMany(Intolerance::class, 'intolerances_products', 'product_id', 'intolerance_id');
+    }
+
+    public function getIntoleranceAttribute(){
+        return $this->intolerances->pluck('name')->toArray();
     }
 }
