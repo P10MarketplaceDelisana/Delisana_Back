@@ -14,11 +14,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             IntoleranceSeeder::class,
-            CategorySeeder::class]);
+            CategorySeeder::class,
+            ProductSeeder::class,
+            IntoleranceProductSeeder::class,
+            RoleSeeder::class,
             UserSeeder::class;
-
-//         User::factory(10)->create();
-//         Product::factory(10)->create();
+           ]);
+            
+//         User::factory(10)->create();   
 //         Order::factory(20)->create();    
     }
 }
