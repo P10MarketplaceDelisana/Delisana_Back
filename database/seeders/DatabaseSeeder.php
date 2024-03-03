@@ -14,7 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             IntoleranceSeeder::class,
-            CategorySeeder::class]);
+            CategorySeeder::class,
+            RoleSeeder::class,
+        ]);
+            
 
 //         User::factory(10)->create();
 //         Product::factory(10)->create();
