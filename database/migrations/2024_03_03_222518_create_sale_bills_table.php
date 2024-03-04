@@ -16,8 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->float('total_price');
             $table->boolean('bill_status');
-            $table->string('user_address');
-            $table->string('user_email')->unique();
             $table->timestamps();
         
             $table->foreign('user_id')->references('id')->on('users');
