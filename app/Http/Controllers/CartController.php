@@ -22,7 +22,7 @@ class CartController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'sales_bill_id' => 'nullable|exists:sale_bills,id',
+            'sales_bill_id' => 'nullable|exists:sales_bills,id',
             'product_id' => 'required|exists:products,id',
             'product_price' => 'required|numeric',
         ]);
@@ -36,7 +36,7 @@ class CartController extends Controller
     {
         $request->validate([
             'user_id' => 'exists:users,id',
-            'sales_bill_id' => 'nullable|exists:sale_bills,id',
+            'sales_bill_id' => 'nullable|exists:sales_bills,id',
             'product_id' => 'exists:products,id',
             'product_price' => 'numeric',
         ]);

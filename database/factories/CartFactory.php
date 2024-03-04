@@ -4,6 +4,10 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Cart;
+use App\Models\SaleBill;
+use App\Models\User;
+use App\Models\Product;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cart>
@@ -20,9 +24,9 @@ class CartFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => \App\Models\User::factory(),
-            'sales_bill_id' => \App\Models\SaleBill::factory(),
-            'product_id' => \App\Models\Product::factory(),
+            // 'user_id' =>  User::all()->random()->id,
+            'sales_bill_id' =>  SaleBill::all()->random()->id,
+            'product_id' =>  Product::all()->random()->id,
             'product_price' => $this->faker->randomFloat(2, 10, 100),
         ];
     }

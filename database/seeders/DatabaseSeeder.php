@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             SaleBillSeeder::class,
-            CartSeeder::class,
+            // CartSeeder::class,
            ]);
             
 //         User::factory(10)->create();   
