@@ -17,7 +17,7 @@ class RoleFactory extends Factory
     public function definition(): array
     {
         return [
-            'role_id'=> \App\Models\Role::pluck('id')->random(),
+            'role' => $this->faker->randomElement(['admin', 'client']),
         ];
     }
 }

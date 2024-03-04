@@ -26,17 +26,16 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => fake()->unique()->userName(),
-            'name' => fake()->name(),
-            'last_name' => fake()->lastName(),
-            'address' => fake()->address(),
-            'phone' => '+34'.$this->fake()->numerify('#########'),
-            'email' => fake()->unique()->safeEmail(),
+            'username' => $this->faker->unique()->userName(),
+            'name' => $this->faker->name(),
+            'last_name' => $this->faker->lastName(),
+            'address' => $this->faker->address(),
+            'phone' => '+34'.$this->faker->numerify('#########'),
+            'email' => $this->faker->unique()->safeEmail(),
             'password' => static::$password ??= Hash::make('password'),
-            'role_id' => \App\Models\Role::factory(),
+            'role_id' => \App\Models\Role::pluck('id')->random(),
         ];
     }
-
     /**
      * Indicate that the model's email address should be unverified.
      */

@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             IntoleranceProductSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            SaleBillSeeder::class,
+            CartSeeder::class,
            ]);
             
 //         User::factory(10)->create();   

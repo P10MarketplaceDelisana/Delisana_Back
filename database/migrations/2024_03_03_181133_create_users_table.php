@@ -20,9 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role_id');
-
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreignId('role_id')->constrained('roles');
 
             $table->timestamps();
         });
