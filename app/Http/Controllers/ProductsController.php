@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
 use App\Models\Product;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class ProductsController extends Controller
 {
@@ -29,7 +32,59 @@ class ProductsController extends Controller
             }else{
             return response()->json(['error'=>'producto no encontrado'], 404);
             }
-          
-        
     }
+
+
+    public function store(Request $request)
+    {
+        try{
+            $validatedData = Validator::make($request->all(), [
+                'name' => 'required|string|max:255',
+                'imagen' => 'required|image', // Valida imagen valida
+                'description' => 'required|string',
+                'category_id' => 'required|integer',
+                'intolerance_id' => 'required|integer',
+                'price' => 'required|numeric',
+            ]);
+
+            if ($validatedData->fails()) {
+                throw new ValidationException($validatedData);
+            }
+
+         // subir imagen a cloudinary   
+        // dd($request);
+              $file = request()->file('imagen');
+              $obj = Cloudinary::upload($file->getRealPath(),['folder'=>'products']);
+              $public_id = $obj->getPublicId();
+              $url = $obj->getSecurePath();
+
+            if (!$url) {
+                throw new \Exception('No se pudo subir la imagen a Cloudinary');
+            }
+
+         // graba en la base de datos       
+        Product::create([
+            "name"=>$request->name,
+            "image"=>$url,
+            // "public_id"=>$public_id,
+            "description"=>$request->description,
+            "category_id"=>$request->category_id,
+            "intolerance_id"=>$request->intolerance_id,
+            "price"=>$request->price,
+        ]);
+         
+  
+
+        } catch  (ValidationException $e) {
+            // Capturar excepciones de validación y manejarlas de manera apropiada
+            return back()->withErrors($e->validator)->withInput(); // no es return back
+            
+        } catch (\Exception $e) {
+                // Capturar excepciones de validación y manejarlas de manera apropiada
+                return back()->withErrors($e->$validatedData)->withInput();
+        }
+
+
+    }
+
 }

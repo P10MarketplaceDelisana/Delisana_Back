@@ -23,13 +23,14 @@ use App\Models\SaleBill;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::controller(CategoryController::class)->group(function() {
    Route::get('/categories',  'index' );
    Route::get('/categories/{id}',  'show' );
+   Route::post('/categories',  'store' );
      
 });
 
@@ -46,11 +47,13 @@ Route::controller(UserController::class)->group(function() {
 Route::controller(SaleBillController::class)->group(function() {
     Route::get('/salesBills',  'index' );
     Route::get('/salesBills/{id}',  'show' );
+    
 });  
 
 Route::controller(ProductsController::class)->group(function() {
     Route::get('/products',  'index' );
     Route::get('/products/{id}',  'show' );
+    Route::post('/products',  'store' );
 });  
 
 Route::controller(CartController::class)->group(function(){
