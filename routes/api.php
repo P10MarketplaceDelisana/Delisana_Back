@@ -54,6 +54,7 @@ Route::controller(ProductsController::class)->group(function() {
     Route::get('/products',  'index' );
     Route::get('/products/{id}',  'show' );
     Route::post('/products',  'store' );
+    //Route::post('/products',  'upload_img' );
 });  
 
 Route::controller(CartController::class)->group(function(){

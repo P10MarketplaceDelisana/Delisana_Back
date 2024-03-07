@@ -38,22 +38,27 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         try{
-            $validatedData = Validator::make($request->all(), [
-                'name' => 'required|string|max:255',
-                'imagen' => 'required|image', // Valida imagen valida
-                'description' => 'required|string',
-                'category_id' => 'required|integer',
-                'intolerance_id' => 'required|integer',
-                'price' => 'required|numeric',
-            ]);
+            // $validatedData = Validator::make($request->all(), [
+            //     'name' => 'required|string|max:255',
+            //     'image' => 'required|image', // Valida imagen valida
+            //     'description' => 'required|string',
+            //     'category_id' => 'required|integer',
+            //     'intolerance_id' => 'required|integer',
+            //     'price' => 'required|numeric',
+            // ]);
 
-            if ($validatedData->fails()) {
-                throw new ValidationException($validatedData);
-            }
+            // if ($validatedData->fails()) {
+            //     throw new ValidationException($validatedData);
+            // }
 
          // subir imagen a cloudinary   
         // dd($request);
-              $file = request()->file('imagen');
+              $file = $request->file('image');
+
+              if (!$file) {
+                return response()->json(['error' => 'No se ha enviado ningún archivo'], 400);
+            }    
+
               $obj = Cloudinary::upload($file->getRealPath(),['folder'=>'products']);
               $public_id = $obj->getPublicId();
               $url = $obj->getSecurePath();
@@ -72,8 +77,6 @@ class ProductsController extends Controller
             "intolerance_id"=>$request->intolerance_id,
             "price"=>$request->price,
         ]);
-         
-  
 
         } catch  (ValidationException $e) {
             // Capturar excepciones de validación y manejarlas de manera apropiada
@@ -84,6 +87,23 @@ class ProductsController extends Controller
                 return back()->withErrors($e->$validatedData)->withInput();
         }
 
+    }
+
+    public function upload_img(Request $request) {
+        $file = $request->file('image');
+
+        if (!$file) {
+            return response()->json(['error' => 'No se ha enviado ningún archivo'], 400);
+        }    
+
+              $obj = Cloudinary::upload($file->getRealPath(),['folder'=>'products']);
+              $public_id = $obj->getPublicId();
+              $url = $obj->getSecurePath();
+
+              return [
+                'url' => $url,
+                'public_id' => $public_id,
+            ];
 
     }
 
