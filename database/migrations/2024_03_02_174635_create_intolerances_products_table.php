@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('intolerance_id')->constrained()->onDelete('cascade');
 
             $table->primary(['product_id', 'intolerance_id']);
+            $table->timestamps(); 
         });
     }
 

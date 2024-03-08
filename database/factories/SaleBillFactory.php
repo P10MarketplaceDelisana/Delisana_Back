@@ -16,9 +16,12 @@ class SaleBillFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' =>  User::all()->random()->id,
+            'user_id' =>  User::factory(),
             'total_price' => $this->faker->randomFloat(2, 10, 100),
             'bill_status' => $this->faker->boolean,
+
         ];
     }
+
+    
 }

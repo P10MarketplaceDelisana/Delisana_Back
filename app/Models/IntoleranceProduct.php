@@ -10,7 +10,21 @@ class IntoleranceProduct extends Model
 {
     use HasFactory;
 
-    public function intolerances(){
-        return $this->belongsToMany(Intolerance::class);
+    protected $table = 'intolerance_products';
+
+    protected $fillable = [
+        'product_id',
+        'intolerance_id',
+    ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function intolerance()
+    {
+        return $this->belongsTo(Intolerance::class);
     }
 }
+

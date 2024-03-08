@@ -21,10 +21,10 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
             'sales_bill_id' => 'nullable|exists:sales_bills,id',
             'product_id' => 'required|exists:products,id',
             'product_price' => 'required|numeric',
+            'number' => 'required|numeric'
         ]);
 
         $cart = Cart::create($request->all());
@@ -39,6 +39,7 @@ class CartController extends Controller
             'sales_bill_id' => 'nullable|exists:sales_bills,id',
             'product_id' => 'exists:products,id',
             'product_price' => 'numeric',
+            'number' => 'numeric'
         ]);
 
         $cart->update($request->all());
@@ -52,10 +53,4 @@ class CartController extends Controller
 
         return response()->json(null, 204);
     }
-<<<<<<< HEAD
 } 
-=======
-} 
-
-//
->>>>>>> 5d597f7791317a8986345d0ab9da6daba003436b

@@ -24,7 +24,6 @@ class ProductFactory extends Factory
             'public_id' => $this->faker->uuid,
             'description' => $this->faker->text(250),
             'category_id' => Category::all()->random()->id,
-            //'intolerance_id'=> Intolerance::all()->random()->id,
             'price' => $this->faker->randomFloat(2, 1, 50),
 
         ];

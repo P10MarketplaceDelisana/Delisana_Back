@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('sales_bill_id')->nullable();
             $table->unsignedBigInteger('product_id');
             $table->float('product_price', 8, 2);
-            $table->timestamps();
-            
+            $table->integer('number');
+            $table->timestamps(); 
             $table->foreign('sales_bill_id')->references('id')->on('sale_bills');
             $table->foreign('product_id')->references('id')->on('products');
         });

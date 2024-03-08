@@ -54,8 +54,9 @@ class ProductsController extends Controller
             //     'image' => 'required|image', // Valida imagen valida
             //     'description' => 'required|string',
             //     'category_id' => 'required|integer',
-            //     'intolerance_id' => 'required|integer',
             //     'price' => 'required|numeric',
+            //     'intolerances' => 'array', // Valida que sea un array
+            //     'intolerances.*' => 'integer', // Valida que cada elemento del array sea un número entero
             // ]);
 
             // if ($validatedData->fails()) {
@@ -82,10 +83,9 @@ class ProductsController extends Controller
         Product::create([
             "name"=>$request->name,
             "image"=>$url,
-            // "public_id"=>$public_id,
+            "public_id"=>$public_id,
             "description"=>$request->description,
             "category_id"=>$request->category_id,
-            "intolerance_id"=>$request->intolerance_id,
             "price"=>$request->price,
         ]);
 

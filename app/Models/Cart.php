@@ -4,27 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Cart extends Model
 {
     use HasFactory;
     protected $fillable = [
-    // 'user_id', 
     'sales_bill_id', 
     'product_id', 
-    'product_price'];
+    'product_price',
+    'number',
+     ];
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
+  
 
-    public function salesBill()
+    public function salesBill(): BelongsTo
     {
         return $this->belongsTo(SaleBill::class,'sales_bill_id');
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class,'product_id');
     }

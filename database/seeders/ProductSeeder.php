@@ -11,9 +11,6 @@ use App\Models\IntoleranceProduct;
 
 class ProductSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         // Primero, crea algunos productos utilizando la factoría de Product

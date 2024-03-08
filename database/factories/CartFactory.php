@@ -24,10 +24,10 @@ class CartFactory extends Factory
     public function definition()
     {
         return [
-            // 'user_id' =>  User::all()->random()->id,
-            'sales_bill_id' =>  SaleBill::all()->random()->id,
-            'product_id' =>  Product::all()->random()->id,
+            'sales_bill_id' => SaleBill::factory(),
+            'product_id' => Product::factory(),
             'product_price' => $this->faker->randomFloat(2, 10, 100),
+            'number' => $this->faker->numberBetween(1, 10),
         ];
     }
 }
