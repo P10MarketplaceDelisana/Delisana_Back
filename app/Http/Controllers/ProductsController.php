@@ -82,40 +82,40 @@ class ProductsController extends Controller
          // graba en la base de datos       
         Product::create([
             "name"=>$request->name,
-            "image"=>$url,
+            "image_url"=>$url,
             "public_id"=>$public_id,
-            "description"=>$request->description,
             "category_id"=>$request->category_id,
+            "description"=>$request->description,
             "price"=>$request->price,
         ]);
 
         } catch  (ValidationException $e) {
             // Capturar excepciones de validación y manejarlas de manera apropiada
             return back()->withErrors($e->validator)->withInput(); // no es return back
-            
-        } catch (\Exception $e) {
-                // Capturar excepciones de validación y manejarlas de manera apropiada
-                return back()->withErrors($e->$validatedData)->withInput();
         }
+        // } catch (\Exception $e) {
+        //         // Capturar excepciones de validación y manejarlas de manera apropiada
+        //         return back()->withErrors($e->$validatedData)->withInput();
+        // }
 
     }
 
-    public function upload_img(Request $request) {
-        $file = $request->file('image');
+    // public function upload_img(Request $request) {
+    //     $file = $request->file('image');
 
-        if (!$file) {
-            return response()->json(['error' => 'No se ha enviado ningún archivo'], 400);
-        }    
+    //     if (!$file) {
+    //         return response()->json(['error' => 'No se ha enviado ningún archivo'], 400);
+    //     }    
 
-              $obj = Cloudinary::upload($file->getRealPath(),['folder'=>'products']);
-              $public_id = $obj->getPublicId();
-              $url = $obj->getSecurePath();
+    //           $obj = Cloudinary::upload($file->getRealPath(),['folder'=>'products']);
+    //           $public_id = $obj->getPublicId();
+    //           $url = $obj->getSecurePath();
 
-              return [
-                'url' => $url,
-                'public_id' => $public_id,
-            ];
+    //           return [
+    //             'url' => $url,
+    //             'public_id' => $public_id,
+    //         ];
 
-    }
+    // }
 
 }
