@@ -24,15 +24,26 @@ class ProductsController extends Controller
 
     public function show($id)
     {
-       
-            $product = Product::with('intolerances')->find($id);
-            if($product){
-                $intolerancesIds = $product->intolerances->pluck('id')->toArray();
-                return response()->json(['intolerances'=>$intolerancesIds], 200);
-            }else{
-            return response()->json(['error'=>'producto no encontrado'], 404);
-            }
+        
+            // $product = Product::with('intolerances')->find($id);
+            // if($product){
+            //     $intolerancesIds = $product->intolerances->pluck('id')->toArray();
+            //     return response()->json(['intolerances'=>$intolerancesIds], 200);
+            // }else{
+            // return response()->json(['error'=>'producto no encontrado'], 404);
+            // }
+
+        
+        $product = Product::with('intolerances')->find($id);
+
+        if ($product) {
+            return response()->json(['product' => $product], 200);
+        } else {
+            return response()->json(['error' => 'Producto no encontrado'], 404);
+        }
+
     }
+
 
 
     public function store(Request $request)

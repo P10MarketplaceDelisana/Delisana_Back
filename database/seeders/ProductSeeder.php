@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
     {
         // Primero, crea algunos productos utilizando la factoría de Product
         $products = Product::factory(10)->create();
-
+/*
         // Luego, para cada producto, adjunta algunas intolerancias aleatorias
         $products->each(function ($product) {
             $intolerances = Intolerance::all()->random(rand(2, 3));
@@ -26,9 +26,9 @@ foreach ($intolerances as $intolerance) {
     // Comprueba si la relación ya existe antes de intentar insertarla
     if (!$product->intolerances()->where('intolerance_id', $intolerance->id)->exists()) {
         $product->intolerances()->attach($intolerance->id);
-    }
+    } 
 }
-});
+});  */
 }
 }
 

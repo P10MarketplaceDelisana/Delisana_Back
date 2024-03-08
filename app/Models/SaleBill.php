@@ -29,4 +29,18 @@ class SaleBill extends Model
         ];
     }
 
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'sales_bill_id');
+    } 
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    } 
+
+   
+
+
+
 }

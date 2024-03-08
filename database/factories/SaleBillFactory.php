@@ -16,11 +16,9 @@ class SaleBillFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => \App\Models\User::factory(),
+            'user_id' =>  User::all()->random()->id,
             'total_price' => $this->faker->randomFloat(2, 10, 100),
             'bill_status' => $this->faker->boolean,
-            'user_address' => $this->faker->address,
-            'user_email' => $this->faker->unique()->safeEmail,
         ];
     }
 }

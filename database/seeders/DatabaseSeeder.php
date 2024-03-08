@@ -22,8 +22,6 @@ class DatabaseSeeder extends Seeder
             SaleBillSeeder::class,
             CartSeeder::class,
            ]);
-            
-//         User::factory(10)->create();   
-//         Order::factory(20)->create();    
+               
     }
 }

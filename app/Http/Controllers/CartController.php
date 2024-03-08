@@ -52,4 +52,10 @@ class CartController extends Controller
 
         return response()->json(null, 204);
     }
+<<<<<<< HEAD
 } 
+=======
+} 
+
+//
+>>>>>>> 5d597f7791317a8986345d0ab9da6daba003436b

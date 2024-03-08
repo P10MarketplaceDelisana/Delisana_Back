@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sales_bills', function (Blueprint $table) {
+        Schema::create('sale_bills', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->float('total_price');
             $table->boolean('bill_status');
-            $table->string('user_address');
-            $table->string('user_email')->unique();
             $table->timestamps();
         
             $table->foreign('user_id')->references('id')->on('users');
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sales_bills');
+        Schema::dropIfExists('sale_bills');
     }
 };
