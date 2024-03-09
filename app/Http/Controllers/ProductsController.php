@@ -33,6 +33,14 @@ class ProductsController extends Controller
             // return response()->json(['error'=>'producto no encontrado'], 404);
             // }
 
+        $product = Product::with('intolerances')->find($id);
+
+        if ($product) {
+            return response()->json(['product' => $product], 200);
+         } else {
+            return response()->json(['error' => 'Producto no encontrado'], 404);
+         }
+
         
         $product = Product::with('intolerances')->find($id);
 
