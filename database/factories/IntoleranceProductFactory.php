@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Factories;
+use App\Models\Intolerance;
+use App\Models\Product;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,7 +19,8 @@ class IntoleranceProductFactory extends Factory
     public function definition(): array
     {
         return [
-            
+            'intolerance_id' => Intolerance::factory(),
+            'product_id' => Product::factory(),
         ];
     }
 }

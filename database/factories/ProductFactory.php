@@ -20,10 +20,10 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'image' => $this->faker->url(),
+            'image_url' => $this->faker->url(),
+            'public_id' => $this->faker->uuid,
             'description' => $this->faker->text(250),
             'category_id' => Category::all()->random()->id,
-            'intolerance_id'=> Intolerance::all()->random()->id,
             'price' => $this->faker->randomFloat(2, 1, 50),
 
         ];

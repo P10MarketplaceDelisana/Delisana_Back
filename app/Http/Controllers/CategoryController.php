@@ -18,4 +18,17 @@ class CategoryController extends Controller
         return $categories;
     }
 
+    public function store(Request $request){
+        $validatedData = $request->validate([
+            'category' => 'required|string|max:255',
+        ]);
+    
+        // Utilizando el método create para crear y guardar el nuevo modelo
+        $category = Category::create([
+            'category' => $validatedData['category'],
+        ]);
+    
+        // Puedes hacer algo con el modelo creado, si es necesario
+    }
+
 }
