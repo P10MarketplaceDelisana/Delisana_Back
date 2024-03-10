@@ -36,6 +36,7 @@ Our decision to maintain separate repositories for **frontend** and **backend** 
 <br>
 
 ## 🚀 Installation Guide (Laravel and MySQL)
+
 **1. Clone the Repository**<br>
 First, clone your project repository from GitHub or any other version control system:<br>
 ```git clone: https://github.com/P10MarketplaceDelisana/Delisana_Back.git```      
