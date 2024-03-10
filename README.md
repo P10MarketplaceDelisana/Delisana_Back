@@ -1,66 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# FEMCODERS F5 -DELISANA ECOMMERCE 🥐🍪🍩<br>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Welcome to Delisana, your healthy baking web store. Whether you have an intolerance such as gluten or lactose, if you want sugar-free products or just want to indulge yourself without feeling guilty, we have everything you need, with native and top quality ingredients.
 
-## About Laravel
+## 📋 Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   Project Overview
+-   Backend Stack
+-   Technologies
+-   Installation Steps
+-   API Routes
+-   Branches
+-   Contributing
+-   License
+-   Authors
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 Project Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+This repository is part of an exciting group project developed during the Femcoders Norte Bootcamp at Factoria F5. Delisana is an online store specializing in personalized pastries. Our mission is to provide a seamless shopping experience for those who want to enjoy delicious treats without compromising their health.
+<br><br>
 
-## Learning Laravel
+## Backend Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+This repository serves as the **backend stack** for Delisana's exciting project. It is intricately linked with our [**frontend repository**](https://github.com/P10MarketplaceDelisana/Delisana_Front), which resides within the P10MarketplaceDelisana organization.<br><br>
+Our decision to maintain separate repositories for **frontend** and **backend** offers several key benefits:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. **Clarity and Separation**: Clear boundaries between project components allow focused work.<br>
+2. **Independent Version Control**: Separate versioning and deployment streamline updates.<br>
+3. **Reduced Conflicts**: Fewer merge conflicts since teams don't modify the same files.<br>
+4. **Security and Access Control**: Role-based access ensures appropriate permissions.<br>
+5. **CI/CD Simplicity**: Customized CI/CD flows for each repository.<br><br>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ⚙️ Technologies
 
-## Laravel Sponsors
+[![My Skills](https://skillicons.dev/icons?i=php,laravel,mysql)](https://skillicons.dev)
+<br>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚀 Installation Guide (Laravel and MySQL)
 
-### Premium Partners
+**1. Clone the Repository**<br>
+First, clone your project repository from GitHub or any other version control system:<br>
+```git clone: https://github.com/P10MarketplaceDelisana/Delisana_Back.git```      
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+**2. Configure Environment**<br>
+Navigate to your project directory:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    cd delisana-back    
 
-## Code of Conduct
+Copy the .env.example file and rename it to .env. Then, configure the necessary environment variables, such as the database connection:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    cp .env.example .env    
 
-## Security Vulnerabilities
+Edit the .env file and set values for DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD according to your MySQL setup.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**3. Install Dependencies**<br>
+Install project dependencies using Composer:
 
-## License
+    composer install    
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**4. Generate Application Key**<br>
+Generate a unique application key for your project:
+
+    php artisan key:generate    
+
+**5. Run Migrations**<br>
+Create the database tables by running migrations:
+
+    php artisan migrate    
+
+**6. Start the Server**
+Launch the Laravel development server:
+
+    php artisan serve    
+
+**That’s it! Your Delisana project is now set up and running.** <br>
+You can access it at :  ```http://localhost:8000.
+npm start. ```   
+
+Note: This vision statement is a fictional example created for the Factoria F5 Femcoders Norte Bootcamp.
+<br><br>
+
+## 🌐 API Routes
+
+In Delisana, we’ve developed several API routes using Laravel to handle HTTP requests. These routes are essential for communication between the frontend and backend of our application.
+
+**Product Routes:**<br>
+/api/products:
+Retrieves a list of all available products.<br>
+/api/products/{id}: Retrieves details of a specific product by its ID.<br>
+**Category Routes:**<br>
+/api/categories: Retrieves a list of all product categories.<br>
+/api/categories/{id}: Retrieves details of a specific category by its ID.<br>
+**Intolerance Routes:**<br>
+/api/intolerances: Retrieves a list of all supported intolerances.<br>
+/api/intolerances/{id}: Retrieves details of a specific intolerance by its ID.
+
+## 🪢 Branches
+
+| BRANCH      | Description                                                                         |
+| ----------- | ----------------------------------------------------------------------------------- |
+| main        | Main branch. Only final functional versions of the user stories will appear here    |
+| dev         | Development branch. Here we merge frontend and backend branches and check stability |
+| feature/... | Various branches each one for an individual feature                                 |
+
+<br>
+
+## 🤝 Contributions
+
+Contributions are welcome. If you have any suggestions for improvement, please open an issue or pull request
+<br>
+
+## 📜 License
+
+This project is licensed under the terms of the MIT license. This means that you can use, copy, modify and distribute the code freely, as long as you acknowledge the original authorship and do not use it for commercial purposes.
+<br><br>
+
+## 👩‍💻 Authors
+
+Created by:
+
+-   [María Cao](https://github.com/maicaocaa)
+-   [Claudia González](https://github.com/claudiaglez)
+-   [Johana Sadoval](https://github.com/Sandovaljohana)
+-   [Loli Vila](https://github.com/Vila71)
+-   [Helena de Rosa](https://github.com/HelenaDR84)
