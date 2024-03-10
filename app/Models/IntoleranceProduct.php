@@ -19,12 +19,12 @@ class IntoleranceProduct extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     public function intolerance()
     {
-        return $this->belongsTo(Intolerance::class);
+        return $this->belongsTo(Intolerance::class, 'intolerance_id');
     }
 }
 

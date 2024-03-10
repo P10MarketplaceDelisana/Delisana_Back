@@ -43,9 +43,7 @@ class ProductsController extends Controller
         }
 
     }
-
-
-
+/*
     public function store(Request $request)
     {
         try{
@@ -118,4 +116,58 @@ class ProductsController extends Controller
 
     // }
 
+}
+*/public function store(Request $request)
+{
+    try {
+        
+        // Validar la solicitud
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'image' => 'required|image',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'intolerances' => 'array',
+        ]);
+
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+
+        // Subir imagen a Cloudinary
+        $file = $request->file('image');
+        $cloudinaryUpload = Cloudinary::upload($file->getRealPath(), ['folder' => 'products']);
+
+        // Verificar la carga exitosa
+        if (!$cloudinaryUpload->getSecurePath() || !$cloudinaryUpload->getPublicId()) {
+            throw new \Exception('No se pudo subir la imagen a Cloudinary');
+        }
+
+        // Obtener las intolerancias seleccionadas desde la solicitud (request)
+        $selectedIntolerances = $request->input('intolerances');
+
+        // Crear el nuevo producto
+        $newProduct = Product::create([
+            'name' => $request->input('name'),
+            'image_url' => $cloudinaryUpload->getSecurePath(),
+            'public_id' => $cloudinaryUpload->getPublicId(),
+            'category_id' => $request->input('category_id'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+        ]);
+
+        // Adjuntar intolerancias al producto
+        if ($request->has('intolerances')) {
+            $intolerances = $request->input('intolerances');
+
+            // Adjuntar intolerancias al producto
+            $newProduct->intolerances()->attach($intolerances);
+        }
+
+        return response()->json($newProduct, 201);
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+}
 }

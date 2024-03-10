@@ -28,7 +28,7 @@ class Product extends Model
 
     public function intolerances(): BelongsToMany
     {
-        return $this->belongsToMany(Intolerance::class, 'intolerances_products', 'product_id', 'intolerance_id');
+        return $this->belongsToMany(Intolerance::class, 'intolerances_products', 'product_id', 'intolerance_id')->withTimestamps();
     }
 
     public function getIntoleranceAttribute(){
