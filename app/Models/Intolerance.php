@@ -15,16 +15,14 @@ class Intolerance extends Model
     ];
 
     public function intolerances_products()
-
     {
         return $this->hasMany(IntoleranceProduct::class, 'intolerance_id');
     } 
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'intolerances_products');
+        return $this->belongsToMany(Product::class, 'intolerance_products', 'intolerance_id', 'product_id');
     }
-
-
-
 }
+
+

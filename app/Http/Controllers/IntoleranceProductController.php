@@ -10,12 +10,12 @@ use App\Models\Product;
 class IntoleranceProductController extends Controller
 {
     public function index(){
-        $products= Product::with('intolerances')->get();
+        $products = Product::with('intolerances.intolerance')->get();
         return response()->json($products);
     }
 
     public function show($id){
-        $product= Product::with('intolerances')->find($id);
+        $product = Product::with('intolerances.intolerance')->find($id);
         return response()->json($product);
     }
 }
